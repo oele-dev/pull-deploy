@@ -1,11 +1,6 @@
-# Very short description of the package
+# Pull deploy strategy
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/oeleco/pull-deploy.svg?style=flat-square)](https://packagist.org/packages/oeleco/pull-deploy)
-[![Build Status](https://img.shields.io/travis/oeleco/pull-deploy/master.svg?style=flat-square)](https://travis-ci.org/oeleco/pull-deploy)
-[![Quality Score](https://img.shields.io/scrutinizer/g/oeleco/pull-deploy.svg?style=flat-square)](https://scrutinizer-ci.com/g/oeleco/pull-deploy)
-[![Total Downloads](https://img.shields.io/packagist/dt/oeleco/pull-deploy.svg?style=flat-square)](https://packagist.org/packages/oeleco/pull-deploy)
-
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Laravel command to deploy your code using a pull origin strategy
 
 ## Installation
 
@@ -18,7 +13,7 @@ composer require oeleco/pull-deploy
 ## Usage
 
 ``` php
-// Usage description here
+php artisan pull:deploy
 ```
 
 ### Testing
@@ -37,7 +32,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Security
 
-If you discover any security related issues, please email correo.oele@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please tweet me @oele_co instead of using the issue tracker.
 
 ## Credits
 
