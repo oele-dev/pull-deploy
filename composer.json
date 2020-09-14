@@ -1,0 +1,54 @@
+{
+    "name": "oeleco/pull-deploy",
+    "description": "Laravel command to deploy your code using a pull origin strategy",
+    "keywords": [
+        "oeleco",
+        "pull-deploy"
+    ],
+    "homepage": "https://github.com/oeleco/pull-deploy",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Osmell Caicedo",
+            "email": "correo.oele@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "oeleco\\PullDeploy\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "oeleco\\PullDeploy\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "oeleco\\PullDeploy\\PullDeployServiceProvider"
+            ],
+            "aliases": {
+                "PullDeploy": "oeleco\\PullDeploy\\PullDeployFacade"
+            }
+        }
+    }
+}
