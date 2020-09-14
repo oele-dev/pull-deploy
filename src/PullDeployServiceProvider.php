@@ -3,6 +3,7 @@
 namespace oeleco\PullDeploy;
 
 use Illuminate\Support\ServiceProvider;
+use oeleco\PullDeploy\Console\PullDeployCommand;
 
 class PullDeployServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,9 @@ class PullDeployServiceProvider extends ServiceProvider
                 __DIR__.'/../config/config.php' => config_path('pull-deploy.php'),
             ], 'config');
             // Registering package commands.
-            $this->commands([]);
+            $this->commands([
+                Console\PullDeployCommand::class
+            ]);
         }
     }
 
