@@ -10,6 +10,11 @@ You can install the package via composer:
 composer require oeleco/pull-deploy
 ```
 
+In earlier versions of Laravel 5.5 , is necesary add to config/app.php
+```php
+oeleco\PullDeploy\PullDeployServiceProvider::class
+```
+
 ## Usage
 
 ``` php
