@@ -5,10 +5,6 @@
  */
 return [
     /**
-     * Repository name
-     */
-    'repository' => env('PULLDEPLOY_REPOSITORY'),
-    /**
      * Username of remote repository
      **/
     'username' => env('PULLDEPLOY_USERNAME'),
