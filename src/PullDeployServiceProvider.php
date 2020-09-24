@@ -3,7 +3,6 @@
 namespace oeleco\PullDeploy;
 
 use Illuminate\Support\ServiceProvider;
-use oeleco\PullDeploy\Console\PullDeployCommand;
 
 class PullDeployServiceProvider extends ServiceProvider
 {
@@ -18,7 +17,7 @@ class PullDeployServiceProvider extends ServiceProvider
             ], 'config');
             // Registering package commands.
             $this->commands([
-                Console\PullDeployCommand::class
+                \oeleco\PullDeploy\Console\PullDeployCommand::class
             ]);
         }
     }
@@ -30,10 +29,5 @@ class PullDeployServiceProvider extends ServiceProvider
     {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'pull-deploy');
-
-        // Register the main class to use with the facade
-        $this->app->singleton('pull-deploy', function () {
-            return new PullDeploy;
-        });
     }
 }
