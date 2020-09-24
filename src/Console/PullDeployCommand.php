@@ -65,7 +65,7 @@ class PullDeployCommand extends Command
         $this->call('clear-compiled');
         $this->call('optimize');
 
-        if (! $this->option('withour-assets')) {
+        if (! $this->option('without-assets')) {
             $this->info('Generate production assets');
             echo exec('npm run prod');
             $this->line('');
