@@ -4,15 +4,21 @@ Laravel command to deploy your code using a pull origin strategy
 
 ## Installation
 
-You can install the package via composer:
+1. You can install the package via composer:
 
 ```bash
 composer require oeleco/pull-deploy
 ```
 
-In earlier versions of Laravel 5.5 , is necesary add to config/app.php
+In earlier versions of Laravel 5.5 , add the following to the providers array in config/app.php
 ```php
 oeleco\PullDeploy\PullDeployServiceProvider::class
+```
+
+2. Publish the configuration file:
+
+```php
+php artisan vendor:publish --provider="oeleco\PullDeploy\PullDeployServiceProvider"
 ```
 
 ## Usage
