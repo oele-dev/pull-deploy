@@ -11,5 +11,5 @@ return [
     /**
      * personal token to login in remote repository
      **/
-    'personal_token' => env('PULLDEPLOY_TOKEN'),
+    'personal_access_token' => env('PULLDEPLOY_TOKEN'),
 ];
