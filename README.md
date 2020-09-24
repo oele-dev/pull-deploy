@@ -36,7 +36,7 @@ If you discover any security related issues, please tweet me @oele_co instead of
 
 ## Credits
 
-- [Osmell Caicedo](https://github.com/oeleco)
+- [@oele_co](https://github.com/oeleco)
 - [All Contributors](../../contributors)
 
 ## License
