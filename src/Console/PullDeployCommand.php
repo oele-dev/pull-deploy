@@ -31,8 +31,13 @@ class PullDeployCommand extends Command
      */
     public function handle()
     {
+        $config = (object) Config::get('pull-deploy');
+
         $remote = $this->option('remote');
         $branch = $this->option('branch');
+
+        $url    = shell_exec("git remote get-url {$remote}");
+        $url    = str_replace("https://", "https://{$config->username}:{$config->personal_access_token}@", $url);
 
         $this->info("Reset to {$remote} {$branch}");
         echo exec("git reset --hard {$remote}/{$branch}");
@@ -40,7 +45,7 @@ class PullDeployCommand extends Command
         $this->line('');
 
         $this->info("Pull from {$remote} {$branch}");
-        echo exec("git pull {$remote} {$branch}");
+        echo exec("git pull {$url}");
         $this->line('');
 
         $this->info('Setup folder permissions');
