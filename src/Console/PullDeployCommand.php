@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Config;
 
 class PullDeployCommand extends Command
 {
-    protected $remote;
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'pull:deploy';
+    protected $signature = 'pull:deploy
+                            {--r|remote=origin : Remote name}
+                            {--b|branch=master : Branch name}';
 
     /**
     * The console command description.
@@ -23,36 +24,22 @@ class PullDeployCommand extends Command
     protected $description = 'Deploy your app from master branch of remote repository (origin)';
 
     /**
-     * Create a new command instance
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $config = Config::get('laratrust');
-
-        $this->remote = "https://{$config['username']}:{$config['token']}@github.com/{$config['username']}/{$config['repository']}.git";
-
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return void
      */
     public function handle()
     {
-        $this->info('Set url for remote repository');
-        echo exec("git remote set-url origin {$this->remote}");
+        $remote = $this->option('remote');
+        $branch = $this->option('branch');
 
-        $this->info('Reset to origin master branch');
-        echo exec('git reset --hard origin/master');
+        $this->info("Reset to {$remote} {$branch}");
+        echo exec("git reset --hard {$remote}/{$branch}");
         echo exec('git clean -n -f');
         $this->line('');
 
-        $this->info('Pull from origin master branch');
-        echo exec('git pull origin master');
+        $this->info("Pull from {$remote} {$branch}");
+        echo exec("git pull {$remote} {$branch}");
         $this->line('');
 
         $this->info('Setup folder permissions');
@@ -65,6 +52,11 @@ class PullDeployCommand extends Command
         $this->line('');
 
         $this->info('Clean and make cache');
+        $this->call('config:cache');
+        $this->call('route:cache');
+        $this->call('view:clear');
+        $this->call('cache:clear');
+        $this->call('clear-compiled');
         $this->call('optimize');
 
         $this->info('Generate production assets');
