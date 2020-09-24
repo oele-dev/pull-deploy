@@ -13,15 +13,16 @@ class PullDeployCommand extends Command
      * @var string
      */
     protected $signature = 'pull:deploy
-                            {--r|remote=origin : Remote name}
-                            {--b|branch=master : Branch name}';
+                            {--r|remote=origin : name of remote repository}
+                            {--b|branch=master : branch name to deploy}
+                            {--without-assets : Ignore run npm prod command}';
 
     /**
     * The console command description.
     *
     * @var string
     */
-    protected $description = 'Deploy your app from master branch of remote repository (origin)';
+    protected $description = 'Deploy your code from branch in remote repository';
 
     /**
      * Execute the console command.
@@ -59,8 +60,10 @@ class PullDeployCommand extends Command
         $this->call('clear-compiled');
         $this->call('optimize');
 
-        $this->info('Generate production assets');
-        echo exec('npm run prod');
-        $this->line('');
+        if (! $this->option('withour-assets')) {
+            $this->info('Generate production assets');
+            echo exec('npm run prod');
+            $this->line('');
+        }
     }
 }
